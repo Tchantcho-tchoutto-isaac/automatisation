@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'postman/newman'  // Image correcte pour Newman
+            image 'postman/newman'  
             args '--entrypoint=""'
         }
     }
