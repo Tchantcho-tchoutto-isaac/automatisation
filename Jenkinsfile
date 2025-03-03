@@ -14,7 +14,7 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 // Utilisation du bon nom de fichier pour la collection
-                sh 'newman run Collection1.postman_collection.json'
+                sh 'newman run Collection1.postman_collection.json  --reporters junit --reporter-junit-export result.xml'
             }
         }
     }
