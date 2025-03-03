@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Run API Tests') {
             steps {
-                // Exécution de Newman sans fichier d'environnement
-                sh 'newman run collections/collection.json'
+                // Utilisation du bon nom de fichier pour la collection
+                sh 'newman run Collection1.postman_collection.json'
             }
         }
     }
