@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Install Newman Reporter htmlextra') {
             steps {
-                // Installation de htmlextra reporter si nécessaire
-                sh 'npm install -g newman-reporter-htmlextra'
+                // Installation du reporter avec --unsafe-perm pour contourner les problèmes de permissions
+                sh 'npm install -g newman-reporter-htmlextra --unsafe-perm'
             }
         }
         stage('Check Newman Version') {
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run API Tests') {
             steps {
-                // Exécution de Newman avec le reporter htmlextra
+                // Exécution des tests API avec le reporter htmlextra
                 sh 'newman run Collection1.postman_collection.json --reporters htmlextra --reporter-htmlextra-export result.html'
             }
         }
