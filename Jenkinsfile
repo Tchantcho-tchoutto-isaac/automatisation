@@ -13,7 +13,8 @@ pipeline {
         }
         stage('Run API Tests') {
             steps {
-                sh 'newman run collections/collection.json -e  --reporters junit'
+                // Exécution de Newman sans fichier d'environnement
+                sh 'newman run collections/collection.json'
             }
         }
     }
