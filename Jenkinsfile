@@ -6,6 +6,12 @@ pipeline {
         }
     }
     stages {
+        stage('Install Newman Reporter htmlextra') {
+            steps {
+                // Installation de htmlextra reporter si nécessaire
+                sh 'npm install -g newman-reporter-htmlextra'
+            }
+        }
         stage('Check Newman Version') {
             steps {
                 sh 'newman --version'
@@ -13,8 +19,8 @@ pipeline {
         }
         stage('Run API Tests') {
             steps {
-                // Utilisation du bon nom de fichier pour la collection
-                sh 'newman run Collection1.postman_collection.json  --reporters junit --reporter-junit-export result.xml'
+                // Exécution de Newman avec le reporter htmlextra
+                sh 'newman run Collection1.postman_collection.json --reporters htmlextra --reporter-htmlextra-export result.html'
             }
         }
     }
